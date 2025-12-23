@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaxoVate - Download AI Image</title>
+    <meta name="description" content="Download high-quality AI-generated image from NaxoVate">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .download-info {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #28a745;
+        }
+        .btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">N</div>
+        <h1>NaxoVate</h1>
+        <p style="color: #666; margin-bottom: 30px;">AI Image Download</p>
+        
+        <div class="download-info">
+            <h3 style="margin-top: 0; color: #28a745;">📥 Preparing Download...</h3>
+            <p id="download-message">Your AI-generated image is being prepared for download.</p>
+            <div class="spinner"></div>
+        </div>
+
+        <a href="/" class="btn">Visit NaxoVate Platform</a>
+        <a href="/ai-generator" class="btn">Generate More Images</a>
+    </div>
+
+    <script>
+        // Extract image ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageId = urlParams.get('id');
+        
+        if (imageId) {
+            // Create download link and trigger download
+            setTimeout(() => {
+                const supabaseUrl = `https://yylaucwhxyepxkvwgvds.supabase.co/storage/v1/object/public/generated_images/${imageId}`;
+                
+                // Create a temporary link and trigger download
+                const link = document.createElement('a');
+                link.href = supabaseUrl;
+                link.download = `naxovate-ai-generated-${imageId}`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Update UI
+                document.querySelector('.download-info h3').innerHTML = '✅ Download Started!';
+                document.querySelector('#download-message').innerHTML = `Your image <strong>${imageId}</strong> should start downloading automatically. If not, <a href="${supabaseUrl}" target="_blank" style="color: #28a745;">click here</a>.`;
+                document.querySelector('.spinner').style.display = 'none';
+            }, 1500);
+        } else {
+            document.querySelector('.download-info h3').innerHTML = '❌ No Image Found';
+            document.querySelector('#download-message').innerHTML = 'No image ID provided. Please use a valid NaxoVate download link.';
+            document.querySelector('.spinner').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

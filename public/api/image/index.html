@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaxoVate - AI Generated Image</title>
+    <meta name="description" content="High-quality AI-generated image created with NaxoVate - Professional AI image generation platform">
+    <meta property="og:title" content="NaxoVate AI Generated Image">
+    <meta property="og:description" content="Professional AI-generated image created with NaxoVate">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NaxoVate">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .redirect-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .features {
+            text-align: left;
+            margin-top: 30px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .feature::before {
+            content: "✨";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">N</div>
+        <h1>NaxoVate</h1>
+        <p class="subtitle">Professional AI Image Generation Platform</p>
+        
+        <div class="redirect-info">
+            <h3 style="margin-top: 0; color: #667eea;">🎨 AI-Generated Image</h3>
+            <p>This branded URL redirects to a high-quality AI-generated image created with NaxoVate's advanced AI technology.</p>
+        </div>
+
+        <a href="/" class="btn">Visit NaxoVate Platform</a>
+        <a href="/ai-generator" class="btn">Create Your Own Images</a>
+
+        <div class="features">
+            <h3 style="color: #333; margin-bottom: 20px;">Why Choose NaxoVate?</h3>
+            <div class="feature">Professional AI image generation</div>
+            <div class="feature">Multiple artistic styles available</div>
+            <div class="feature">High-quality output guaranteed</div>
+            <div class="feature">Branded URLs for professional sharing</div>
+            <div class="feature">Easy sharing and download options</div>
+        </div>
+    </div>
+
+    <script>
+        // Extract image ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageId = urlParams.get('id');
+        
+        if (imageId) {
+            // Redirect to the actual Supabase URL after a short delay for branding
+            setTimeout(() => {
+                const supabaseUrl = `https://yylaucwhxyepxkvwgvds.supabase.co/storage/v1/object/public/generated_images/${imageId}`;
+                window.location.href = supabaseUrl;
+            }, 2000);
+            
+            // Update the page content to show the redirect is happening
+            document.querySelector('.redirect-info h3').innerHTML = '🔄 Redirecting to Your Image...';
+            document.querySelector('.redirect-info p').innerHTML = `Loading your AI-generated image: <strong>${imageId}</strong><br><br>You will be redirected automatically in 2 seconds.`;
+        }
+    </script>
+</body>
+</html>
